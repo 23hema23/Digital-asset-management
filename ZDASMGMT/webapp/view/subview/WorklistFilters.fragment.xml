@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" width="auto" xmlns:filterbar="sap.ui.comp.filterbar">
+	<!--<Text text="hi"/>-->
+	<filterbar:FilterBar showFilterConfiguration="false" id="fbWorklistFilters" clear="onPressWorklistFilterRestore"
+		search="onWorklistFilterApply" showGoOnFB="true" showClearButton="true" showRestoreButton="false" showClearOnFB="true" useToolbar="false">
+		<filterbar:filterItems>
+			<filterbar:FilterItem name="AssetID,AssetName" label="{i18n>Asset}">
+				<filterbar:control>
+					<Input width="100%"/>
+				</filterbar:control>
+			</filterbar:FilterItem>
+			<filterbar:FilterItem visible="{= ${roleModel>/role} === 'LMM' ? false : true}" name="ProductionStatusKey" label="{i18n>ProductionStatus}">
+				<filterbar:control>
+					<MultiComboBox width="100%">
+						<core:Item key="01" text="Confidential"/>
+						<core:Item key="02" text="Done"/>
+					</MultiComboBox>
+				</filterbar:control>
+			</filterbar:FilterItem>
+			<filterbar:FilterItem name="AssetTypeId" label="{i18n>AssetType}">
+				<filterbar:control>
+					<MultiComboBox width="100%">
+						<core:Item key="01" text="Image"/>
+						<core:Item key="02" text="Video"/>
+						<core:Item key="03" text="3D File"/>
+					</MultiComboBox>
+				</filterbar:control>
+			</filterbar:FilterItem>
+			<filterbar:FilterItem name="Market" label="{i18n>Market}">
+				<filterbar:control>
+					<Input width="100%"/>
+				</filterbar:control>
+			</filterbar:FilterItem>
+		</filterbar:filterItems>
+	</filterbar:FilterBar>
+	<Toolbar>
+		<Title text="{worklistView>/worklistTableTitle}" level="H1"/>
+		<ToolbarSpacer/>
+		<Button visible="{= ${roleModel>/role} === 'CM' ? true : false}" type="Emphasized" tooltip="{i18n>tooltipAddAssetDetais}"
+			icon="sap-icon://add" text="{i18n>CreateAsset}" press="onAddAssetDetails"/>
+	</Toolbar>
+</core:FragmentDefinition>

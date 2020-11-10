@@ -1,0 +1,15 @@
+<mvc:View controllerName="am.ZDASMGMT.controller.App" displayBlock="true" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">
+	<Page title="{i18n>appTitle}" showFooter="true">
+		<headerContent>
+			<Toolbar id="appHeaderToolbar" class="appHeaderToolbar">
+				<ToolbarSpacer/>
+				<Label text="{roleModel>/roleTxt}"/>
+				<Button icon="sap-icon://grid" text="Roles" press="handleChangeRole" visible="true"/>
+				<Button icon="sap-icon://customer" press="navToPeopleProfile"/>
+			</Toolbar>
+		</headerContent>
+		<content>
+			<App height="93%" id="app" busy="{appView>/busy}" busyIndicatorDelay="{appView>/delay}"/>
+		</content>
+	</Page>
+</mvc:View>

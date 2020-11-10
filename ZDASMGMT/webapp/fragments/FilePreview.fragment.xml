@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:vk="sap.ui.vk">
+	<Dialog id="idDialog">
+		<vk:Viewer id="viewer" sceneLoadingSucceeded="onUpdateFinished" toolbarTitle="{i18n>viewerToolbarTitle}" enableToolbar="false" showSceneTree="false" width="600px" height="400px">
+			<vk:layoutData>
+				<FlexItemData growFactor="1"/>
+			</vk:layoutData>
+		</vk:Viewer>
+		<buttons>
+			<Button press="onDialogClose" icon="sap-icon://decline" tooltip="Close"></Button>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

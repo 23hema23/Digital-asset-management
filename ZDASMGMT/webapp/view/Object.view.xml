@@ -1,0 +1,190 @@
+<mvc:View controllerName="am.ZDASMGMT.controller.Object" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:u="sap.ui.unified">
+	<Page enableScrolling="true" id="pgObject" showHeader="false" showFooter="true" busy="{objectView>/busy}">
+		<ObjectHeader title="{= ${objectView>/EditMode} ? ${i18n>CreateAssetHeader} : ${/AssetName} }" condensed="true">
+			<ObjectAttribute visible="{= !${objectView>/EditMode}}" text="{/AssetID}"/>
+		</ObjectHeader>
+		<content>
+			<l:Grid class="sapUiSmallMarginBegin sapUiSmallMarginTop" hSpacing="0" defaultSpan="XL4 L4 M4 S12">
+				<l:content >
+					<VBox width="100%" wrap="Wrap">
+						<Label text="{i18n>FieldName}"></Label>
+						<VBox width="100%" wrap="Wrap">
+							<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/FieldName}"/>
+							<Text visible="{= !${objectView>/EditMode}}" text="{/FieldName}" wrapping="true">
+								<layoutData>
+									<l:GridData span="XL4 L4 M4 S12"/>
+								</layoutData>
+							</Text>
+						</VBox>
+					</VBox>
+					<VBox width="100%" wrap="Wrap">
+						<Label text="{i18n>AssetPortalLink}"></Label>
+						<VBox width="100%" wrap="Wrap">
+							<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/AssetPortalLink}"/>
+							<Text visible="{= !${objectView>/EditMode}}" text="{/AssetPortalLink}" wrapping="true">
+								<layoutData>
+									<l:GridData span="XL4 L4 M4 S12"/>
+								</layoutData>
+							</Text>
+						</VBox>
+					</VBox>
+					<VBox class="sapUiLargeMarginEnd" width="100%" wrap="Wrap">
+						<Label text="{i18n>AssetName}"></Label>
+						<VBox width="100%" wrap="Wrap">
+							<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/AssetName}"/>
+							<Text visible="{= !${objectView>/EditMode}}" text="{/AssetName}" wrapping="true">
+								<layoutData>
+									<l:GridData span="XL4 L4 M4 S12"/>
+								</layoutData>
+							</Text>
+						</VBox>
+					</VBox>
+					<VBox width="100%" wrap="Wrap">
+						<Label text="{i18n>ProductionStatus}"></Label>
+						<VBox width="100%" wrap="Wrap">
+							<Input enabled="false" width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/ProductionStatusTxt}"/>
+							<ObjectStatus visible="{= !${objectView>/EditMode}}" text="{/ProductionStatusTxt}"
+								state="{path:'/ProductionStatusKey', formatter:'.formatter.statusFormatter'}">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</ObjectStatus>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>Description}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/Description}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/Description}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox>
+					<Label text="{i18n>ReadyDate}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<DatePicker displayFormat="dd.MM.yyyy" visible="{objectView>/EditMode}" width="90%" id="DP1" dateValue="{ path: 'AssetModel>/ReadyDate'}"
+							placeholder="Enter Date ..." change="handleChange" class="sapUiSmallMarginBottom"/>
+						<Text visible="{= !${objectView>/EditMode}}"
+							text="{ path: '/ReadyDate', type: 'sap.ui.model.odata.type.DateTime', formatOptions: { UTC: true,pattern : 'dd.MM.yyyy' }, constraints: { displayFormat: 'Date' } }"
+							wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>AssetType}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/AssetTypeName}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/AssetTypeName}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>Theme}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/Theme}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/Theme}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>SKU}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/SKU}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/SKU}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>Campaign}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/Campaign}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/Campaign}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>Audience}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/Audience}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/Audience}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>SubAudience}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/SubAudience}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/SubAudience}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>Market}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<Input width="90%" visible="{objectView>/EditMode}" value="{AssetModel>/Market}"/>
+						<Text visible="{= !${objectView>/EditMode}}" text="{/Market}" wrapping="true">
+							<layoutData>
+								<l:GridData span="XL4 L4 M4 S12"/>
+							</layoutData>
+						</Text>
+					</VBox>
+				</VBox>
+				<VBox width="100%" wrap="Wrap">
+					<Label text="{i18n>File}"></Label>
+					<VBox width="100%" wrap="Wrap">
+						<u:FileUploader visible="{objectView>/EditMode}" width="90%" id="fileUploader" name="myFileUpload" uploadUrl="upload/"
+							tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+						<Link visible="{= !${objectView>/EditMode}}" text="File" emphasized="true" press="onPressFile">
+							<layoutData>
+								<l:GridData span="XL12 L12 M12 S12"/>
+							</layoutData>
+						</Link>
+					</VBox>
+				</VBox>
+				<VBox visible="{= !${objectView>/EditMode}}" width="100%" wrap="Wrap">
+					<Label text="{i18n>ContentManager}"></Label>
+					<Text text="{/ContentManager}" wrapping="true">
+						<layoutData>
+							<l:GridData span="XL4 L4 M4 S12"/>
+						</layoutData>
+					</Text>
+				</VBox>
+			</l:content>
+		</l:Grid>
+	</content>
+	<footer>
+		<OverflowToolbar>
+			<ToolbarSpacer/>
+			<Button visible="{objectView>/EditMode}" text="{i18n>BTN_CANCEL_TXT}" press="onCancelButtonPress" enabled="true"/>
+			<Button visible="{= ( ${/ProductionStatusKey} === '01' ? true : false ) &amp;&amp; (${roleModel>/role} === 'PGM' ? true : false)}"
+				text="{i18n>BTN_APPPROVE_TXT}" type="Emphasized" press="onApproveBtnPress" enabled="true"/>
+			<Button visible="{objectView>/EditMode}" text="{i18n>BTN_CREATE_TXT}" type="Emphasized" press="onCreateBtnPress" enabled="true"/>
+		</OverflowToolbar>
+	</footer>
+</Page>
+</mvc:View>
